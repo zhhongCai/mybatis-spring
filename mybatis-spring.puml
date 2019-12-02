@@ -1,0 +1,27 @@
+@startuml
+
+class org.mybatis.SqlSessionFactoryBean implements FactoryBean, InitializingBean, ApplicationListener {
+
+  afterPropertiesSet() throws Exception
+
+  onApplicationEvent(ApplicationEvent)
+}
+
+note bottom of org.mybatis.SqlSessionFactoryBean
+    mybatis和spring集成的核心类, 创建SqlSessionFactory
+    mybatis初始化过程在afterPropertiesSet方法中完成
+    onApplicationEvent方法中处理容器刷新事件, 检查所有statements是否完整
+end note
+
+class org.mybatis.transaction.SpringManagedTransaction implements Transaction {
+}
+
+class org.mybatis.transaction.SpringManagedTransactionFactory implements TransactionFactory {
+}
+
+note bottom of org.mybatis.transaction
+
+end note
+
+
+@enduml
